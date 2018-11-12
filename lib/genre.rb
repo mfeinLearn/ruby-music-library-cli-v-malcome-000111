@@ -1,9 +1,12 @@
 class Genre
+  # Builder Pattern
+  # Mixin Pattern
+  # Module Pattern
   extend Findable # Take all of the methods in the Findable module and add them
   extend Persistable::ClassMethods #=> the extended hook of the ClassMethods module will fire.
   extend Nameable::ClassMethods
   include Persistable::InstanceMethods
-  attr_accessor :name, :songs # has many songs 
+  attr_accessor :name, :songs # has many songs
 
   def self.all # Class Reader
     @@all
