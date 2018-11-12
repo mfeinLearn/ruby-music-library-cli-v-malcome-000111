@@ -1,5 +1,6 @@
-MODELS
-Song, Artist, and Genre
+method look up chain
 
-> name is an attr_accessor
-> 
+1. the object itself
+2. the class of the object (on an instance  / class level)
+3. any module of the class
+4. any parent classes of the object

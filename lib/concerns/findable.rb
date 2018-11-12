@@ -1,7 +1,7 @@
-module Concerns::Findable
+module Findable # a set of behaviors
   # Module code here
   def find_by_name(name)
-      self.all.find{|something|something.name == name}
+      self.all.find{|an_object|an_object.name == name}
   end
 
   def find_or_create_by_name(name)

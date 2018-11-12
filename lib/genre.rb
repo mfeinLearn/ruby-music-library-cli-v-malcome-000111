@@ -1,39 +1,24 @@
-class Genre extend Concerns::Findable
-  attr_accessor :name
-  attr_reader :songs
+class Genre
+  extend Findable # Take all of the methods in the Findable module and add them
+  extend Persistable::ClassMethods #=> the extended hook of the ClassMethods module will fire.
+  extend Nameable::ClassMethods
+  include Persistable::InstanceMethods
+  attr_accessor :name, :songs # has many songs 
 
-  @@all = []
-  def initialize(name)
-    @name = name
-    @songs = []
-    #@@all << self
-  end
-
-  def self.all
+  def self.all # Class Reader
     @@all
   end
 
-  def save
-    @@all << self
+  def initialize
+    save
+    @songs = []
   end
 
-  def self.destroy_all
-    @@all = []
+  def artists # It looks like a reader but its more complicated
+    # a has many through
+    @songs.collect{|s| s.artist}.uniq
   end
 
-  def self.create(name)
-    song = Genre.new(name)
-    song.save
-    song
-  end
 
-  #def songs
-    #@songs
-  #end
-
-  def artists
-    #binding.pry
-    songs.collect{|song|song.artist}.uniq
-  end
 
 end
